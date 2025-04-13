@@ -1,7 +1,14 @@
+.card {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px #0000001a;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
 .contactInfoWrappper {
   display: flex;
-  flex-direction: column;
-
+  justify-content: space-around;
   gap: 4px;
 }
 
@@ -16,5 +23,15 @@
 }
 
 .contactBtn {
-  padding: 6px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contactBtn:hover {
+  background-color: #c82333;
 }

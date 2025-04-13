@@ -1,8 +1,8 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "../../redux/contactSlice";
+import { selectContacts } from "../../redux/contactSlice";
+import { addContact } from "../../redux/contactsOps";
 import css from "./ContactForm.module.css";
 
 const FeedbackSchema = Yup.object().shape({
@@ -15,14 +15,9 @@ const FeedbackSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const initialValues = {
-  username: "",
-  phone: "",
-};
-
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts.items);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = (values, actions) => {
     const isDuplicate = contacts.some(
@@ -34,19 +29,13 @@ export default function ContactForm() {
       return;
     }
 
-    const newContact = {
-      id: nanoid(),
-      name: values.username,
-      number: values.phone,
-    };
-
-    dispatch(addContact(newContact));
+    dispatch(addContact({ name: values.username, number: values.phone }));
     actions.resetForm();
   };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ username: "", phone: "" }}
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
