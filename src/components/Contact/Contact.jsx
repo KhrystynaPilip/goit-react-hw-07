@@ -1,8 +1,8 @@
 import { PiUser } from "react-icons/pi";
 import { PiPhone } from "react-icons/pi";
-import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contactsOps";
+import css from "./Contact.module.css";
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();

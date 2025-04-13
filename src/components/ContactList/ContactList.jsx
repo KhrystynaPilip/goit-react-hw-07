@@ -4,7 +4,7 @@ import {
   selectError,
   selectFilteredContacts,
   selectLoading,
-} from "../../redux/contactSlice";
+} from "../../redux/contactsSlice";
 import Contact from "../Contact/Contact";
 
 export default function ContactList() {
